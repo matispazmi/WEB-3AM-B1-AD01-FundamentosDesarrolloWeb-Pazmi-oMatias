@@ -1,0 +1,199 @@
+<!doctype html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="AutoPan, mantenimiento preventivo y cuidado automotriz.">
+    <title>AutoPan — Tu vehículo en las mejores manos
+    </title>
+    <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="vendor/sweetalert2/sweetalert2.min.css">
+    <link rel="stylesheet" href="css/estilos.css">
+    <script defer src="vendor/sweetalert2/sweetalert2.min.js">
+    </script>
+    <script defer src="vendor/bootstrap/bootstrap.bundle.min.js">
+    </script>
+    <script defer src="js/datos.js">
+    </script>
+    <script defer src="js/autenticacion.js">
+    </script>
+  </head>
+
+  <body>
+    <header class="barra"><a class="marca" href="index.html"><span class="marca-icono">A</span>Auto<span>Pan</span></a>
+      <nav><a class="activo" href="index.html">Inicio</a><a href="#acerca">Acerca de</a><a href="#servicios">Servicios</a><a data-sesion hidden href="mantenimiento.html">Solicitar mantenimiento</a><a data-sesion hidden href="perfil.html">Mi perfil</a><a data-sesion data-rol="usuario" hidden href="mis-solicitudes.html">Mis solicitudes</a><a data-sesion data-rol="admin" hidden href="admin.html#tab-solicitudes">Solicitudes</a><a data-sesion data-rol="admin" hidden href="admin.html#tab-usuarios">Usuarios</a><a data-sin-sesion href="login.html">Iniciar sesión</a><button data-sesion data-cerrar-sesion hidden class="nav-cerrar">Cerrar sesión</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero contenedor">
+        <div class="hero-copy"><span class="eyebrow"><i></i> CUIDAMOS TU CAMINO</span>
+          <h1>Tu vehículo en las <span>mejores manos.</span>
+          </h1>
+          <p>Servicio automotriz confiable, transparente y pensado para que sigas avanzando con tranquilidad.
+          </p>
+          <div class="hero-acciones"><a class="boton boton-primario" href="mantenimiento.html" data-sesion hidden>Solicitar mantenimiento <span>→</span></a><a class="boton boton-primario" href="login.html" data-sin-sesion>Solicitar mantenimiento <span>→</span></a><a class="boton boton-texto" href="#servicios">Conoce nuestros servicios</a>
+          </div>
+          <div class="hero-confianza">
+            <div class="avatar-stack"><b>✓</b><b>★</b><b>+</b>
+            </div>
+<span><strong>Atención experta</strong><small>Tu auto, siempre en buenas manos</small></span>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <img src="img/taller-autoPan.svg" alt="Ilustración de un automóvil en un taller AutoPan">
+          <div class="flotante flotante-a"><span>✦</span>
+            <div><strong>Servicio confiable</strong><small>Atención con garantía</small>
+            </div>
+          </div>
+          <div class="flotante flotante-b"><span class="punto-verde"></span>
+            <div><strong>Agenda disponible</strong><small>Reserva tu próxima visita</small>
+            </div>
+          </div>
+          <div class="hero-numero">01 <span>—</span> 06
+          </div>
+        </div>
+      </section>
+
+      <section class="franja contenedor">
+        <div><strong>6+</strong><span>servicios especializados</span>
+        </div>
+        <div><strong>100%</strong><span>comprometidos con tu seguridad</span>
+        </div>
+        <div><strong>4.9 <span class="estrella">★</span></strong><span>calificación de nuestros clientes</span>
+        </div>
+      </section>
+
+      <section class="seccion contenedor" id="servicios">
+        <div class="encabezado-seccion">
+          <div><span class="eyebrow">SERVICIOS PARA TU AUTO</span>
+            <h2>Todo lo que necesita,
+              <br><span>en un solo lugar.</span>
+            </h2>
+          </div>
+          <p>Desde el mantenimiento preventivo hasta el diagnóstico preciso, nuestro equipo se ocupa de cada detalle.
+          </p>
+        </div>
+        <div class="servicios-grid">
+          <article class="servicio-card"><span class="servicio-icono azul">◉</span>
+            <h3>Cambio de aceite
+            </h3>
+            <p>Protege el motor y alarga su vida con lubricantes de calidad.
+            </p>
+<a href="mantenimiento.html">Solicitar servicio <b>↗</b></a>
+          </article>
+          <article class="servicio-card"><span class="servicio-icono coral">⏣</span>
+            <h3>Revisión de frenos
+            </h3>
+            <p>Seguridad en cada trayecto con una inspección completa.
+            </p>
+<a href="mantenimiento.html">Solicitar servicio <b>↗</b></a>
+          </article>
+          <article class="servicio-card"><span class="servicio-icono verde">⚙</span>
+            <h3>Mantenimiento de motor
+            </h3>
+            <p>Rendimiento óptimo con técnicos que conocen tu vehículo.
+            </p>
+<a href="mantenimiento.html">Solicitar servicio <b>↗</b></a>
+          </article>
+          <article class="servicio-card"><span class="servicio-icono amarillo">▤</span>
+            <h3>Cambio de filtros
+            </h3>
+            <p>Aire limpio y mejor desempeño para cada componente.
+            </p>
+<a href="mantenimiento.html">Solicitar servicio <b>↗</b></a>
+          </article>
+          <article class="servicio-card"><span class="servicio-icono violeta">⌕</span>
+            <h3>Diagnóstico general
+            </h3>
+            <p>Detectamos a tiempo lo que tu auto necesita.
+            </p>
+<a href="mantenimiento.html">Solicitar servicio <b>↗</b></a>
+          </article>
+          <article class="servicio-card"><span class="servicio-icono celeste">◌</span>
+            <h3>Revisión de neumáticos
+            </h3>
+            <p>Presión, desgaste y alineación para un viaje seguro.
+            </p>
+<a href="mantenimiento.html">Solicitar servicio <b>↗</b></a>
+          </article>
+        </div>
+      </section>
+
+      <section class="seccion contenedor acerca" id="acerca">
+        <div class="encabezado-seccion">
+          <div><span class="eyebrow">ACERCA DEL TALLER</span>
+            <h2>Un equipo que entiende
+              <br><span>lo que te mueve.</span>
+            </h2>
+          </div>
+          <p>AutoPan acompaña a conductores de Guayaquil con mantenimiento preventivo, atención clara y un seguimiento sencillo para cada visita. Cuidamos cada vehículo como si fuera nuestro.
+          </p>
+        </div>
+        <div class="contacto-datos">
+          <p>📍 Av. de las Américas 120, Guayaquil
+          </p>
+          <p>◷ Lun–Sáb · 08:00 a 18:00
+          </p>
+          <p>☎ +593 4 555 0123 · hola@autoPan.com
+          </p>
+        </div>
+      </section>
+      <section class="beneficios">
+        <div class="contenedor beneficios-interior">
+          <div><span class="eyebrow">PREVENIR ES AVANZAR</span>
+            <h2>Un poco de cuidado hoy.
+              <br><span>Muchos kilómetros mañana.</span>
+            </h2>
+            <p>El mantenimiento preventivo evita reparaciones costosas y mantiene tu vehículo listo para cualquier camino.
+            </p>
+<a class="boton boton-claro" href="mantenimiento.html">Agenda una revisión <span>→</span></a>
+          </div>
+          <ul>
+            <li><span>01</span>
+              <div><strong>Más seguridad al conducir</strong><small>Revisamos los sistemas esenciales de tu auto.</small>
+              </div>
+<b>↗</b>
+            </li>
+            <li><span>02</span>
+              <div><strong>Ahorra en reparaciones</strong><small>Detectar a tiempo hace toda la diferencia.</small>
+              </div>
+<b>↗</b>
+            </li>
+            <li><span>03</span>
+              <div><strong>Mejor rendimiento</strong><small>Tu vehículo trabaja como debe, todos los días.</small>
+              </div>
+<b>↗</b>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="contacto contenedor">
+        <div><span class="eyebrow">VISÍTANOS</span>
+          <h2>Estamos cerca
+            <br>para ayudarte.
+          </h2>
+        </div>
+        <div class="contacto-datos">
+          <p>📍 Av. de las Américas 120, Guayaquil
+          </p>
+          <p>◷ Lun–Sáb · 08:00 a 18:00
+          </p>
+          <p>☎ +593 4 555 0123 · hola@autoPan.com
+          </p>
+        </div>
+<a class="contacto-mapa" href="mailto:hola@autoPan.com">Contáctanos <span>↗</span></a>
+      </section>
+
+    </main>
+    <footer class="pie">
+      <div class="contenedor pie-inner"><a class="marca marca-clara" href="index.html"><span class="marca-icono">A</span>Auto<span>Pan</span></a>
+        <p>Tu camino merece el mejor cuidado.
+        </p>
+<small>© 2026 AutoPan · Proyecto académico de demostración.</small>
+      </div>
+    </footer>
+  </body>
+</html>

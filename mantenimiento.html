@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Solicitar mantenimiento — AutoPan</title>
+    <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="vendor/sweetalert2/sweetalert2.min.css">
+    <link rel="stylesheet" href="css/estilos.css">
+    <script defer src="vendor/sweetalert2/sweetalert2.min.js"></script>
+    <script defer src="vendor/bootstrap/bootstrap.bundle.min.js"></script>
+    <script defer src="js/datos.js"></script>
+    <script defer src="js/autenticacion.js"></script>
+    <script defer src="js/mantenimiento.js"></script>
+  </head>
+  <body class="fondo-suave">
+    <header class="barra">
+      <a class="marca" href="index.html">
+        <span class="marca-icono">A</span>Auto<span>Pan</span>
+      </a>
+      <nav>
+        <a href="index.html">Inicio</a>
+        <a data-sesion href="perfil.html">Mi perfil</a>
+        <a data-sesion data-rol="usuario" href="mis-solicitudes.html">Mis solicitudes</a>
+        <a data-sesion data-rol="admin" href="admin.html#tab-solicitudes">Solicitudes</a>
+        <a data-sesion data-rol="admin" href="admin.html#tab-usuarios">Usuarios</a>
+        <span data-sesion class="usuario-nav" data-nombre-usuario></span>
+        <button data-sesion data-cerrar-sesion class="nav-cerrar">Cerrar sesión</button>
+        <a data-sin-sesion href="login.html">Iniciar sesión</a>
+      </nav>
+    </header>
+
+    <main class="contenedor pagina-interior">
+      <div class="pagina-titulo">
+        <div>
+          <span class="eyebrow">RESERVA TU VISITA</span>
+          <h1>Solicitar mantenimiento</h1>
+          <p>Cuéntanos sobre tu vehículo. Usaremos los datos de tu cuenta para contactarte.</p>
+        </div>
+        <a class="boton boton-texto" data-sesion data-rol="usuario" href="mis-solicitudes.html">
+          Ver mis solicitudes →
+        </a>
+      </div>
+
+      <form id="form-mantenimiento" class="formulario-panel">
+        <section class="form-seccion">
+          <span class="paso">01</span>
+          <div class="form-seccion-cuerpo">
+            <h2>Datos del propietario</h2>
+            <p>Los datos que ingresaste al crear tu cuenta se agregan automáticamente.</p>
+
+            <div id="selector-usuario-admin" class="ancho-completo" hidden>
+              <label for="usuario-solicitud">Asignar solicitud a cliente</label>
+              <select id="usuario-solicitud" name="usuarioId">
+                <option value="">Selecciona una cuenta de cliente</option>
+              </select>
+            </div>
+
+            <div id="resumen-propietario" class="resumen-propietario" hidden>
+              <div><span>Propietario</span><strong id="resumen-nombre"></strong></div>
+              <div><span>Documento</span><strong id="resumen-documento"></strong></div>
+              <div><span>Correo</span><strong id="resumen-correo"></strong></div>
+              <div><span>Teléfono</span><strong id="resumen-telefono"></strong></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="form-seccion">
+          <span class="paso">02</span>
+          <div class="form-seccion-cuerpo">
+            <h2>Datos del vehículo</h2>
+            <p>Ayúdanos a conocer el auto que vamos a atender.</p>
+            <div class="form-grid">
+              <label>Marca<input name="marca" required placeholder="Ej. Toyota"></label>
+              <label>Modelo<input name="modelo" required placeholder="Ej. Corolla"></label>
+              <label>Año de fabricación<input name="anio" type="number" min="1950" required placeholder="2022"></label>
+              <label>Placa<input name="placa" required minlength="5" maxlength="10" pattern="[A-Za-z0-9-]{5,10}" placeholder="ABC-1234"></label>
+              <label>Kilometraje actual<input name="kilometraje" type="number" min="0" required placeholder="45000"></label>
+            </div>
+          </div>
+        </section>
+
+        <section class="form-seccion">
+          <span class="paso">03</span>
+          <div class="form-seccion-cuerpo">
+            <h2>Servicio que necesitas</h2>
+            <p>Selecciona el tipo de mantenimiento y una fecha conveniente.</p>
+            <div class="form-grid">
+              <label>Tipo de mantenimiento
+                <select name="tipoMantenimiento" required>
+                  <option value="">Selecciona un servicio</option>
+                  <option>Cambio de aceite</option>
+                  <option>Revisión de frenos</option>
+                  <option>Mantenimiento de motor</option>
+                  <option>Cambio de filtros</option>
+                  <option>Diagnóstico general</option>
+                  <option>Revisión de neumáticos</option>
+                </select>
+              </label>
+              <label>Fecha solicitada<input name="fecha" type="date" required></label>
+              <label>Hora de revisión<input name="horaRevision" type="time" required></label>
+
+              <fieldset class="campo-radio ancho-completo">
+                <legend>Jornada preferida</legend>
+                <label class="form-check">
+                  <input class="form-check-input" type="radio" name="jornada" value="Mañana" required>
+                  <span class="form-check-label">Mañana</span>
+                </label>
+                <label class="form-check">
+                  <input class="form-check-input" type="radio" name="jornada" value="Tarde" required>
+                  <span class="form-check-label">Tarde</span>
+                </label>
+              </fieldset>
+
+              <label class="checkbox-confirmacion ancho-completo">
+                <input class="form-check-input" name="confirmacion" type="checkbox" required>
+                Confirmo que los datos de esta solicitud son correctos.
+              </label>
+              <label class="ancho-completo">Descripción del problema
+                <textarea name="descripcion" rows="3" required maxlength="500" placeholder="Describe brevemente qué necesita tu vehículo"></textarea>
+              </label>
+              <label class="ancho-completo">Observaciones adicionales
+                <textarea name="observaciones" rows="2" maxlength="400" placeholder="Horario preferido u otro detalle (opcional)"></textarea>
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <div class="form-footer">
+          <span>🔒 Tus datos se usan solo para gestionar esta solicitud.</span>
+          <button type="submit" class="boton boton-primario">Enviar solicitud <span>→</span></button>
+        </div>
+      </form>
+    </main>
+
+    <footer class="pie">
+      <div class="contenedor pie-inner">
+        <small>© 2026 AutoPan · Proyecto académico de demostración.</small>
+      </div>
+    </footer>
+  </body>
+</html>

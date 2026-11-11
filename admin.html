@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Administración — AutoPan</title>
+    <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="vendor/sweetalert2/sweetalert2.min.css">
+    <link rel="stylesheet" href="css/estilos.css">
+    <script defer src="vendor/sweetalert2/sweetalert2.min.js"></script>
+    <script defer src="vendor/bootstrap/bootstrap.bundle.min.js"></script>
+    <script defer src="js/datos.js"></script>
+    <script defer src="js/autenticacion.js"></script>
+    <script defer src="js/admin.js"></script>
+  </head>
+  <body class="fondo-suave">
+    <header class="barra">
+      <a class="marca" href="index.html">
+        <span class="marca-icono">A</span>Auto<span>Pan</span>
+      </a>
+      <nav class="admin-navegacion">
+        <a data-pestana-admin="tab-solicitudes" href="#tab-solicitudes">Solicitudes</a>
+        <a data-pestana-admin="tab-usuarios" href="#tab-usuarios">Usuarios</a>
+        <a href="mantenimiento.html">＋ Nueva solicitud</a>
+        <a href="perfil.html">Mi perfil</a>
+        <span class="usuario-nav" data-nombre-usuario></span>
+        <button data-cerrar-sesion class="nav-cerrar">Cerrar sesión</button>
+      </nav>
+    </header>
+
+    <main class="contenedor pagina-interior admin-main">
+      <section id="tab-solicitudes" class="pestana-admin">
+        <div class="pagina-titulo">
+          <div>
+            <span class="eyebrow">CENTRO DE OPERACIONES</span>
+            <h1>Gestión de solicitudes</h1>
+            <p>Consulta y actualiza los servicios del taller.</p>
+          </div>
+          <a class="boton boton-primario" href="mantenimiento.html">＋ Nueva solicitud</a>
+        </div>
+
+        <section class="indicadores">
+          <article class="indicador">
+            <span class="indicador-icono azul">▤</span>
+            <div><small>Total de solicitudes</small><strong id="total-registros">0</strong></div>
+            <span class="indicador-nota">registros</span>
+          </article>
+          <article class="indicador">
+            <span class="indicador-icono ambar">◷</span>
+            <div><small>Pendientes</small><strong id="total-pendientes">0</strong></div>
+            <span class="indicador-nota">por atender</span>
+          </article>
+          <article class="indicador">
+            <span class="indicador-icono violeta">⚙</span>
+            <div><small>En proceso</small><strong id="total-proceso">0</strong></div>
+            <span class="indicador-nota">en taller</span>
+          </article>
+          <article class="indicador">
+            <span class="indicador-icono verde">✓</span>
+            <div><small>Finalizados</small><strong id="total-finalizados">0</strong></div>
+            <span class="indicador-nota">completados</span>
+          </article>
+        </section>
+
+        <section class="tabla-panel">
+          <div class="tabla-cabecera">
+            <div>
+              <span class="eyebrow">REGISTRO DE SERVICIOS</span>
+              <h2>Mantenimientos</h2>
+            </div>
+            <div class="filtros">
+              <label class="buscador">⌕
+                <input id="busqueda" type="search" placeholder="Buscar propietario o placa" aria-label="Buscar propietario o placa">
+              </label>
+              <select id="filtro-estado" aria-label="Filtrar por estado">
+                <option>Todos</option>
+                <option>Pendiente</option>
+                <option>En proceso</option>
+                <option>Finalizado</option>
+                <option>Cancelado</option>
+                <option>Desactivada</option>
+              </select>
+            </div>
+          </div>
+          <div class="tabla-scroll">
+            <table class="table align-middle mb-0">
+              <thead>
+                <tr>
+                  <th>ID</th><th>Propietario</th><th>Placa</th><th>Vehículo</th>
+                  <th>Servicio</th><th>Fecha</th><th>Hora</th><th>Estado</th><th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="tabla-mantenimientos"></tbody>
+            </table>
+          </div>
+          <p class="tabla-pie">Los cambios se guardan automáticamente en este navegador.</p>
+        </section>
+      </section>
+
+      <section id="tab-usuarios" class="pestana-admin" hidden>
+        <div class="pagina-titulo">
+          <div>
+            <span class="eyebrow">DIRECTORIO DE CUENTAS</span>
+            <h1>Gestión de usuarios</h1>
+            <p>Edita los datos personales desde este módulo. Las solicitudes se administran en la pestaña anterior.</p>
+          </div>
+        </div>
+
+        <section class="tabla-panel panel-usuarios">
+          <div class="tabla-cabecera">
+            <div>
+              <span class="eyebrow">CUENTAS REGISTRADAS</span>
+              <h2>Usuarios</h2>
+            </div>
+            <span class="usuarios-ayuda">Las contraseñas no se muestran.</span>
+          </div>
+          <div class="tabla-scroll">
+            <table class="table align-middle mb-0">
+              <thead>
+                <tr>
+                  <th>Usuario</th><th>Documento</th><th>Correo electrónico</th>
+                  <th>Teléfono</th><th>Rol</th><th>Estado</th><th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="tabla-usuarios"></tbody>
+            </table>
+          </div>
+          <p class="tabla-pie">Los cambios de cuenta también actualizan los datos asociados a sus solicitudes.</p>
+        </section>
+      </section>
+    </main>
+
+    <dialog id="dialogo-mantenimiento" class="dialogo">
+      <div class="dialogo-cabecera">
+        <div class="dialogo-titulo-grupo">
+          <span class="dialogo-icono" id="dialogo-icono">👁</span>
+          <div>
+            <span class="eyebrow" id="dialogo-contexto">DETALLE DE SERVICIO</span>
+            <h2 id="dialogo-titulo">Solicitud</h2>
+            <small id="dialogo-operador"></small>
+          </div>
+        </div>
+        <button id="cerrar-dialogo" class="icono-boton" aria-label="Cerrar">×</button>
+      </div>
+      <div id="contenido-dialogo"></div>
+      <div class="dialogo-footer">
+        <button id="guardar-edicion" class="boton boton-primario" hidden>Guardar cambios</button>
+      </div>
+    </dialog>
+
+    <dialog id="dialogo-usuario" class="dialogo">
+      <div class="dialogo-cabecera">
+        <div class="dialogo-titulo-grupo">
+          <span class="dialogo-icono" id="usuario-dialogo-icono">✎</span>
+          <div>
+            <span class="eyebrow" id="usuario-dialogo-contexto">EDICIÓN DE CUENTA</span>
+            <h2 id="usuario-dialogo-titulo">Editar cuenta</h2>
+            <small id="usuario-dialogo-operador"></small>
+          </div>
+        </div>
+        <button id="cerrar-dialogo-usuario" class="icono-boton" aria-label="Cerrar">×</button>
+      </div>
+      <div id="contenido-dialogo-usuario"></div>
+      <div class="dialogo-footer">
+        <button id="guardar-usuario" class="boton boton-primario">Guardar cambios</button>
+      </div>
+    </dialog>
+
+    <footer class="pie">
+      <div class="contenedor pie-inner">
+        <small>© 2026 AutoPan · Panel administrativo de demostración.</small>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Iniciar sesión — AutoPan</title>
+    <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="vendor/sweetalert2/sweetalert2.min.css">
+    <link rel="stylesheet" href="css/estilos.css">
+    <script defer src="vendor/sweetalert2/sweetalert2.min.js"></script>
+    <script defer src="vendor/bootstrap/bootstrap.bundle.min.js"></script>
+    <script defer src="js/datos.js"></script>
+    <script defer src="js/autenticacion.js"></script>
+  </head>
+  <body class="fondo-suave">
+    <header class="barra">
+      <a class="marca" href="index.html">
+        <span class="marca-icono">A</span>Auto<span>Pan</span>
+      </a>
+      <nav><a href="index.html">Volver al inicio</a></nav>
+    </header>
+
+    <main class="login-layout">
+      <section class="login-arte">
+        <div class="login-arte-contenido">
+          <span class="eyebrow">AUTOMOTRIZ, A TU RITMO</span>
+          <h1>El cuidado de tu auto, <span>sin complicaciones.</span></h1>
+          <p>Solicita servicios, consulta tus mantenimientos y mantén todo bajo control.</p>
+          <img src="img/taller-autoPan.svg" alt="Auto dentro de un taller">
+        </div>
+      </section>
+
+      <section class="login-panel">
+        <div class="login-card">
+          <section id="panel-acceso">
+            <span class="eyebrow">BIENVENIDO DE NUEVO</span>
+            <h2>Inicia sesión</h2>
+            <p class="muted">Ingresa con tu cuenta de AutoPan.</p>
+            <div id="error-login" class="mensaje-error" role="alert" hidden></div>
+
+            <form id="form-login">
+              <label>Correo electrónico
+                <input id="correo" type="email" autocomplete="username" placeholder="tu@correo.com" required>
+              </label>
+              <label>Contraseña
+                <span class="campo-contrasena">
+                  <input id="password" type="password" autocomplete="current-password" placeholder="Tu contraseña" required>
+                  <button class="ojo-password" type="button" data-toggle-password="password" aria-label="Mostrar contraseña" aria-pressed="false">◉</button>
+                </span>
+              </label>
+              <button class="boton boton-primario boton-ancho" type="submit">Iniciar sesión <span>→</span></button>
+            </form>
+
+            <p class="alternar-formulario">
+              ¿Aún no tienes cuenta? <a href="#registro" data-mostrar-registro>Crear cuenta de usuario</a>
+            </p>
+
+            <div class="demo-cuentas">
+              <strong>Cuentas de demostración</strong>
+              <p>Admin: <code>admin@autoPan.com</code> / <code>admin123</code></p>
+              <p>Usuario: <code>usuario@autoPan.com</code> / <code>usuario123</code></p>
+              <p>Cliente prueba: <code>cliente.demo@autoPan.com</code> / <code>cliente123</code></p>
+            </div>
+            <p class="nota-seguridad">Demostración académica: las credenciales se guardan localmente y no son seguras para datos reales.</p>
+          </section>
+
+          <section id="panel-registro" hidden>
+            <span class="eyebrow">ÚNETE A AUTOPAN</span>
+            <h2>Crear cuenta</h2>
+            <p class="muted">Regístrate para solicitar y consultar mantenimientos.</p>
+            <div id="error-registro" class="mensaje-error" role="alert" hidden></div>
+
+            <form id="form-registro">
+              <label>Nombre completo
+                <input id="registro-nombre" type="text" autocomplete="name" minlength="2" maxlength="90" placeholder="Nombre y apellido" required>
+              </label>
+              <label>Correo electrónico
+                <input id="registro-correo" type="email" autocomplete="email" placeholder="tu@correo.com" required>
+              </label>
+              <label>Tipo de documento
+                <select id="registro-tipo-documento" required>
+                  <option value="cedula">Número de cédula</option>
+                  <option value="pasaporte">Pasaporte</option>
+                  <option value="ruc">RUC</option>
+                </select>
+              </label>
+              <label>Número de documento
+                <input id="registro-cedula" required inputmode="numeric" pattern="[0-9]{10}" maxlength="10" placeholder="10 dígitos" title="La cédula debe tener exactamente 10 dígitos.">
+              </label>
+              <label>Teléfono celular (10 dígitos)
+                <input id="registro-telefono" required type="tel" inputmode="numeric" pattern="[0-9]{10}" maxlength="10" placeholder="0988618939" title="Ingresa exactamente 10 dígitos, solo números.">
+              </label>
+              <label>Contraseña
+                <span class="campo-contrasena">
+                  <input id="registro-password" type="password" autocomplete="new-password" minlength="8" placeholder="Mínimo 8 caracteres" required>
+                  <button class="ojo-password" type="button" data-toggle-password="registro-password" aria-label="Mostrar contraseña" aria-pressed="false">◉</button>
+                </span>
+              </label>
+              <label>Confirmar contraseña
+                <span class="campo-contrasena">
+                  <input id="registro-confirmar" type="password" autocomplete="new-password" minlength="8" placeholder="Repite tu contraseña" required>
+                  <button class="ojo-password" type="button" data-toggle-password="registro-confirmar" aria-label="Mostrar contraseña" aria-pressed="false">◉</button>
+                </span>
+              </label>
+              <button class="boton boton-primario boton-ancho" type="submit">Crear cuenta <span>→</span></button>
+            </form>
+
+            <p class="alternar-formulario">
+              ¿Ya tienes cuenta? <a href="#login" data-mostrar-login>Iniciar sesión</a>
+            </p>
+            <p class="nota-seguridad">Las cuentas creadas aquí siempre tienen permisos de usuario. El registro de administrador no está disponible.</p>
+          </section>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

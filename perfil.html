@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mi perfil — AutoPan</title>
+    <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="vendor/sweetalert2/sweetalert2.min.css">
+    <link rel="stylesheet" href="css/estilos.css">
+    <script defer src="vendor/sweetalert2/sweetalert2.min.js"></script>
+    <script defer src="vendor/bootstrap/bootstrap.bundle.min.js"></script>
+    <script defer src="js/datos.js"></script>
+    <script defer src="js/autenticacion.js"></script>
+    <script defer src="js/perfil.js"></script>
+  </head>
+  <body class="fondo-suave">
+    <header class="barra">
+      <a class="marca" href="index.html">
+        <span class="marca-icono">A</span>Auto<span>Pan</span>
+      </a>
+      <nav>
+        <a href="index.html">Inicio</a>
+        <a data-sesion href="mantenimiento.html">Solicitar mantenimiento</a>
+        <a data-sesion data-rol="usuario" href="mis-solicitudes.html">Mis solicitudes</a>
+        <a data-sesion data-rol="admin" href="admin.html#tab-solicitudes">Solicitudes</a>
+        <a data-sesion data-rol="admin" href="admin.html#tab-usuarios">Usuarios</a>
+        <span data-sesion class="usuario-nav" data-nombre-usuario></span>
+        <button data-sesion data-cerrar-sesion class="nav-cerrar">Cerrar sesión</button>
+        <a data-sin-sesion href="login.html">Iniciar sesión</a>
+      </nav>
+    </header>
+
+    <main class="container pagina-interior">
+      <div class="pagina-titulo">
+        <div>
+          <span class="eyebrow">MI CUENTA AUTOPAN</span>
+          <h1>Mi perfil</h1>
+          <p>Consulta y actualiza tus datos personales y de contacto.</p>
+        </div>
+        <a class="boton boton-texto" href="mis-solicitudes.html">← Volver a mis solicitudes</a>
+      </div>
+
+      <section class="perfil-resumen">
+        <span class="perfil-avatar" aria-hidden="true">👤</span>
+        <div>
+          <span class="eyebrow">PERFIL ACTIVO</span>
+          <h2 id="perfil-nombre-resumen">Mi cuenta</h2>
+          <p>Actualiza aquí tu información personal.</p>
+        </div>
+        <span class="perfil-resumen-icono">✦</span>
+      </section>
+
+      <form id="form-perfil" class="formulario-panel">
+        <section class="form-seccion">
+          <span class="paso">01</span>
+          <div class="form-seccion-cuerpo">
+            <h2>Información de la cuenta</h2>
+            <p>Tu correo se usa para iniciar sesión y no se puede cambiar desde aquí.</p>
+            <div class="form-grid">
+              <label>Nombre completo
+                <input class="form-control" name="nombre" id="perfil-nombre" required minlength="2" maxlength="90">
+              </label>
+              <label>Correo electrónico
+                <input class="form-control" name="correo" id="perfil-correo" type="email" readonly aria-readonly="true">
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <section class="form-seccion">
+          <span class="paso">02</span>
+          <div class="form-seccion-cuerpo">
+            <h2>Documento y contacto</h2>
+            <div class="form-grid">
+              <label>Tipo de documento
+                <select class="form-select" name="tipoDocumento" id="perfil-tipo-documento">
+                  <option value="cedula">Número de cédula</option>
+                  <option value="pasaporte">Pasaporte</option>
+                  <option value="ruc">RUC</option>
+                </select>
+              </label>
+              <label>Número de documento
+                <input class="form-control" name="cedula" id="perfil-documento" required>
+              </label>
+              <label>Teléfono celular (10 dígitos)
+                <input class="form-control" name="telefono" id="perfil-telefono" type="tel" inputmode="numeric" pattern="[0-9]{10}" maxlength="10" placeholder="0988618939" required>
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <section class="form-seccion">
+          <span class="paso">03</span>
+          <div class="form-seccion-cuerpo">
+            <h2>Cambiar contraseña</h2>
+            <p>Deja estos campos vacíos si deseas conservar tu contraseña actual.</p>
+            <div class="form-grid">
+              <label>Nueva contraseña
+                <span class="campo-contrasena">
+                  <input class="form-control" name="password" id="perfil-password" type="password" autocomplete="new-password" minlength="8" placeholder="Mínimo 8 caracteres">
+                  <button class="ojo-password" type="button" data-toggle-password="perfil-password" aria-label="Mostrar contraseña" aria-pressed="false">◉</button>
+                </span>
+              </label>
+              <label>Confirmar nueva contraseña
+                <span class="campo-contrasena">
+                  <input class="form-control" name="confirmarPassword" id="perfil-confirmar-password" type="password" autocomplete="new-password" minlength="8" placeholder="Repite la contraseña">
+                  <button class="ojo-password" type="button" data-toggle-password="perfil-confirmar-password" aria-label="Mostrar contraseña" aria-pressed="false">◉</button>
+                </span>
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <div class="form-footer">
+          <span>🔒 El correo de acceso permanece sin cambios.</span>
+          <button class="btn btn-primary boton boton-primario" type="submit">Guardar perfil <span>→</span></button>
+        </div>
+      </form>
+    </main>
+
+    <footer class="pie">
+      <div class="container pie-inner">
+        <small>© 2026 AutoPan · Proyecto académico de demostración.</small>
+      </div>
+    </footer>
+  </body>
+</html>

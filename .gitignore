@@ -1,0 +1,24 @@
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Configuración local del editor
+.vscode/
+.idea/
+
+# Dependencias y artefactos de herramientas (el proyecto no requiere Node)
+node_modules/
+coverage/
+dist/
+build/
+
+# Logs y archivos temporales
+*.log
+*.tmp
+*.swp
+
+# Secretos o configuraciones locales; mantener disponible el ejemplo
+.env
+.env.*
+!.env.example

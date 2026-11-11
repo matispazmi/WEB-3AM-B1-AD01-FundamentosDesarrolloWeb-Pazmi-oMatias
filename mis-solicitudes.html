@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mis solicitudes — AutoPan</title>
+    <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="vendor/sweetalert2/sweetalert2.min.css">
+    <link rel="stylesheet" href="css/estilos.css">
+    <script defer src="vendor/sweetalert2/sweetalert2.min.js"></script>
+    <script defer src="vendor/bootstrap/bootstrap.bundle.min.js"></script>
+    <script defer src="js/datos.js"></script>
+    <script defer src="js/autenticacion.js"></script>
+    <script defer src="js/mantenimiento.js"></script>
+  </head>
+  <body class="fondo-suave">
+    <header class="barra">
+      <a class="marca" href="index.html">
+        <span class="marca-icono">A</span>Auto<span>Pan</span>
+      </a>
+      <nav>
+        <a href="index.html">Inicio</a>
+        <a href="perfil.html">Mi perfil</a>
+        <a href="mantenimiento.html">Solicitar mantenimiento</a>
+        <a data-sesion data-rol="admin" href="admin.html#tab-solicitudes">Solicitudes</a>
+        <a data-sesion data-rol="admin" href="admin.html#tab-usuarios">Usuarios</a>
+        <span class="usuario-nav" data-nombre-usuario></span>
+        <button data-cerrar-sesion class="nav-cerrar">Cerrar sesión</button>
+      </nav>
+    </header>
+
+    <main class="contenedor pagina-interior">
+      <div class="pagina-titulo">
+        <div>
+          <span class="eyebrow">TU ESPACIO AUTOPAN</span>
+          <h1>Mis solicitudes</h1>
+          <p>Hola, <strong data-nombre-usuario>conductor</strong>. Aquí puedes seguir cada servicio.</p>
+        </div>
+        <a class="boton boton-primario" href="mantenimiento.html">Nueva solicitud <span>＋</span></a>
+      </div>
+      <div class="solicitudes-grid" id="mis-solicitudes"></div>
+    </main>
+
+    <footer class="pie">
+      <div class="contenedor pie-inner">
+        <small>© 2026 AutoPan · Proyecto académico de demostración.</small>
+      </div>
+    </footer>
+  </body>
+</html>
